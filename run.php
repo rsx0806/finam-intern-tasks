@@ -6,7 +6,7 @@ if( $argsCount != 2 ){
     echo "2 arguments required\n";
     exit;
 }
-elseif( $argv[1] > $argv[2] ){
+if( $argv[1] > $argv[2] ){
     echo "First argument must be less than the second\n";
     exit;
 }
