@@ -12,17 +12,17 @@ elseif( $argv[1] > $argv[2] ){
 }
 else{
     for($i = $argv[1]; $i<= $argv[2]; $i++){
-        if( ($i % 3 == 0) && ($i % 5 == 0)){
-            echo "FooBar\n";
+        $output = "";
+        if( $i % 3 == 0 ){
+            $output .="Foo";
         }
-        elseif(($i % 3 == 0) && ($i % 5 != 0)){
-            echo "Foo\n";
+        if( $i % 5 == 0 ){
+            $output .="Bar";
         }
-        elseif(($i % 3 != 0) && ($i % 5 == 0)){
-            echo "Bar\n";
-        }else{
-            echo $i."\n";
+        if(($i % 3 != 0) && ($i % 5 != 0)){
+            $output .=$i;
         }
+        echo $output."\n";
     }
 }
 
