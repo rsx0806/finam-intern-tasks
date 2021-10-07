@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <style>
+        input,select{
+            padding: 10px;
+            margin: 5px;
+            width: 30%;
+        }
+        input[type="submit"]{
+            width: 10%;
+        }
+        form{
+            width: 100%;
+        }
+        label{
+            display: inline-block;
+            width: 10%;
+        }
+        .form-task{
+            text-align: center;
+            display: block;
+            width: 100%;
+        }
+        .validate-alert{
+            padding: 5px;
+            background-color: #f44336;
+            width: 29%;
+            color: white;
+            margin-left: 40%;
+        }
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+    </style>
+    <div class="form-task">
+        <form onsubmit="return validateForm();" id="mainForm">
+            <label for="name">ФИО</label><input type="text" name="name" required><Br>
+            <label for="address">Адрес</label><input type="text" name="address"><Br>
+            <label for="email">Email</label><input type="email" name="email"><Br>
+            <label for="phone">Моб. телефон</label><input type="phone" name="phone" required><Br>
+            <label for="text">Комментарий</label><input type="textarea" name="text"><Br>
+            <input type="submit" value="Отправить" />
+        </form>
+    </div>
+    <script>
+    function handleSubmit(){
+        let message = '';
+        form = document.getElementById("mainForm").elements;
+        for(i = 0; i <= form.length-2; i++){
+            let el = form[i];
+            let label = document.querySelector('[for="'+el["name"]+'"]').innerHTML;
+            message += label + ": " + el["value"]+" ";
+        }
+        console.log(message);
+    }
+
+    function validateForm() {
+        event.preventDefault();
+        let x = document.forms["mainForm"]["email"].value;
+        let domain = x.split("@");
+        if (domain[1] == "gmail.com") {
+            document.querySelector('[name="email"]').insertAdjacentHTML("afterend",'<div class="validate-alert"><span class="closebtn" onclick="this.parentElement.remove();">&times;</span>Регистрация пользователей с таким почтовым адресом невозможна</div>')
+            return false;
+        }else{
+            handleSubmit();
+        }
+    }
+    </script>
+</body>
+</html>
