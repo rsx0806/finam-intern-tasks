@@ -3,7 +3,7 @@
 2) Форма обратной связи - Решение [form.html](form.html)
 3) Задача Фонотека - Дамп [database.sql](database.sql)
 
-3 задача запрос 1 :
+3 задача запрос 1: Вывести 10 самых новых песен в жанре Рок. В выводе должны быть колонки: Название песни, Название исполнителя, Длительность, Дата выхода
 ```
 select
     distinct songs.name as song, singers.name as singer, songs.duration as duration, songs.release_date as release_date
@@ -14,7 +14,7 @@ from
 where 1 = ANY (songs.genre)
 order by songs.release_date desc limit 10;
 ```
-3 задача запрос 2 :
+3 задача запрос 2: Вывести 5 исполнителей, которые выпустили больше всего песен. Выводе должно быть: Название исполнителя, сколько песен выпустил
 ```
 select 
     count(*) as songs_count, singers.name 
